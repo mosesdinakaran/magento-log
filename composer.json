@@ -1,7 +1,6 @@
 {
   "name": "moses/magento-log",
   "description": "Moses Magento Log",
-  "require": {},
   "type": "magento2-module",
   "version": "1.0.1",
   "autoload": {

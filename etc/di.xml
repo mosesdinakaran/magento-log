@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2021 Moses. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- API Plugins -->
+    <type name="Magento\Webapi\Controller\Rest">
+        <plugin name="moses_log_magento_webapi_rest" type="Moses\Log\Plugin\Magento\Webapi\Controller\RestPlugin"/>
+    </type>
+
+    <!-- API custom logging handler -->
+    <type name="Moses\Log\Model\Logger\ApiHandler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Moses\Log\Model\Logger\ApiLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">MosesAPI</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Moses\Log\Model\Logger\ApiHandler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
