@@ -4,6 +4,10 @@ An Logger Extension to log all/specific API calls
 
 ## To Install
 
+Using Composer : composer require moses/magento-log
+
+Download from Github https://github.com/mosesdinakaran/magento-log.git and paste in app code folder
+
 ## Configuration
 Stores -> Configuration -> Advanced -> Developer -> Moses Logging
 
