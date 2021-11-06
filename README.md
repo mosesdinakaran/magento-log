@@ -1,6 +1,9 @@
 # Moses Log
+
 An Logger Extension to log all/specific API calls
-##To Install
+
+## To Install
+
 ## Configuration
 Stores -> Configuration -> Advanced -> Developer -> Moses Logging
 
