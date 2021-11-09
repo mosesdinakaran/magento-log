@@ -28,9 +28,9 @@ class Configuration
     /**#@+
      * XML path  constants
      */
-    const PATH_STATUS = 'dev/moses_logging/status';
+    const PATH_STATUS = 'me_api_logging/moses_logging/status';
 
-    const PATH_URLS = 'dev/moses_logging/urls';
+    const PATH_URLS = 'me_api_logging/moses_logging/urls';
     /**#@-*/
 
     /**

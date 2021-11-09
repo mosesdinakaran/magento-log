@@ -93,7 +93,6 @@ class RestPlugin
     private function canLog(string $url): bool
     {
         $status = $this->configuration->getLoggingStatus();
-
         switch ($status) {
             case LoggingStatus::ENABLED_FOR_ALL:
                 $returnValue = true;
@@ -104,6 +103,7 @@ class RestPlugin
             default:
                 $returnValue = false;
         }
+
         return $returnValue;
     }
 

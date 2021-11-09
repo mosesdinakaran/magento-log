@@ -23,15 +23,15 @@ class LoggingStatus implements OptionSourceInterface
     {
         return [
             [
-                'value' => 0,
+                'value' => self::DISABLED,
                 'label' => __('No')
             ],
             [
-                'value' => 1,
+                'value' => self::ENABLED_FOR_ALL,
                 'label' => __('Enable For All Apis')
             ],
             [
-                'value' => 2,
+                'value' => self::ENABLED_FOR_SPECIFIC,
                 'label' => __('Enable For Selected Apis')
             ]
         ];
@@ -45,9 +45,9 @@ class LoggingStatus implements OptionSourceInterface
     public function toArray(): arrary
     {
         return [
-            0 => __('No'),
-            1 => __('Enable For All Apis'),
-            2 => __('Enable For Selected Apis')
+            self::DISABLED => __('No'),
+            self::ENABLED_FOR_ALL => __('Enable For All Apis'),
+            self::ENABLED_FOR_SPECIFIC => __('Enable For Selected Apis')
         ];
     }
 }

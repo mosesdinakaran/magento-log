@@ -5,25 +5,30 @@
  * See COPYING.txt for license details.
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
-    <system>
-        <section id="dev">
-            <group id="moses_logging" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="0"
-                   showInStore="0">
-                <label>Moses Logging</label>
-                <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
-                       showInStore="1">
-                    <label>Enable API Logging</label>
-                    <source_model>Moses\Log\Model\Config\Source\LoggingStatus</source_model>
-                </field>
-                <field id="urls" translate="label" type="textarea" sortOrder="21" showInDefault="1"
-                       showInWebsite="0" showInStore="0">
-                    <label>Regular Expression Patterns</label>
-                    <depends>
-                        <field id="status">2</field>
-                    </depends>
-                    <comment><![CDATA[
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+<system>
+    <tab id="moses_extensions" translate="label" sortOrder="600">
+        <label>Moses Extensions</label>
+    </tab>
+    <section id="me_api_logging" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>API Logging</label>
+        <tab>moses_extensions</tab>
+        <resource>Moses_Extensions::config</resource>
+        <group id="moses_logging" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="0"
+               showInStore="0">
+            <label>API Logging</label>
+            <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Enable API Logging</label>
+                <source_model>Moses\Log\Model\Config\Source\LoggingStatus</source_model>
+            </field>
+            <field id="urls" translate="label" type="textarea" sortOrder="21" showInDefault="1"
+                   showInWebsite="0" showInStore="0">
+                <label>Regular Expression Patterns</label>
+                <depends>
+                    <field id="status">2</field>
+                </depends>
+                <comment><![CDATA[
                     <br> - Log file will be generated in MAGE_ROOT/var/log/moses-api-debug.log
                     <br> - Use New line to enter more than one urls or Regular Expression
                     <br> - Ex
@@ -32,8 +37,8 @@
                     <br> V1/checkoutcomupapi/getTokenList : To Match a specific url
                     The method preg_match is used to match the url
                     ]]></comment>
-                </field>
-            </group>
-        </section>
-    </system>
+            </field>
+        </group>
+    </section>
+</system>
 </config>
