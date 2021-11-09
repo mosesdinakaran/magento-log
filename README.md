@@ -36,9 +36,14 @@ This can be safely deployed in Production environment as its very light weight.
 
 ## To Install
 
-Using Composer : composer require moses/magento-log
+This extension can be installed through composer or by downloading the extension package and placing it under the code directory (MAGE_ROOT/app/code/Moses/Log)
+Alternatively you can download from github as well https://github.com/mosesdinakaran/magento-log.git
 
-Download from Github https://github.com/mosesdinakaran/magento-log.git and paste in app code folder
+To Install with composer
+
+composer require moses/magento-log
+
+Warning : This package is not installable via Composer 1.x, please make sure you upgrade to Composer 2+.
 
 ## Configuration
 Stores -> Configuration -> Moses Extensions -> API Logging
@@ -56,4 +61,6 @@ V1/carts/(\d)* : Matches for all quotes
 V1/checkoutcomupapi/getTokenList : Match a specific url
 
 ## Output
-Log file will be generated in MAGE_ROOT/var/log/moses-api-debug.log
+
+Once the API Logging is enabled, The request and response will be available in the below log file
+MAGE_ROOT/var/log/moses-api-debug.log
