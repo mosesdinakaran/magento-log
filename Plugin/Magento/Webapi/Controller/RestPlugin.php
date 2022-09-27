@@ -10,11 +10,11 @@ namespace Moses\Log\Plugin\Magento\Webapi\Controller;
 
 use Moses\Log\Services\Configuration;
 use Moses\Log\Model\Config\Source\LoggingStatus;
-use Moses\Log\Model\Logger\ApiLogger;
 use Magento\Framework\Webapi\Rest\Response as RestResponse;
 use Magento\Webapi\Controller\Rest;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Serialize\SerializerInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class RestPlugin
@@ -33,24 +33,23 @@ class RestPlugin
     private $jsonSerializer;
 
     /**
-     * @var ApiLogger
+     * @var LoggerInterface
      */
-    private $apiLogger;
+    private $logger;
 
     /**
-     * RestPlugin constructor.
      * @param Configuration $configuration
      * @param SerializerInterface $jsonSerializer
-     * @param ApiLogger $apiLogger
+     * @param LoggerInterface $logger
      */
     public function __construct(
         Configuration $configuration,
         SerializerInterface $jsonSerializer,
-        ApiLogger $apiLogger
+        LoggerInterface $logger
     ) {
         $this->configuration = $configuration;
         $this->jsonSerializer = $jsonSerializer;
-        $this->apiLogger = $apiLogger;
+        $this->logger = $logger;
     }
 
     /**
@@ -76,9 +75,9 @@ class RestPlugin
                 'REQUEST' => $requestData,
                 'RESPONSE' => $responseData
             ];
-            $this->apiLogger->info(json_encode($data));
+            $this->logger->info(json_encode($data));
         } catch (\Exception $e) {
-            $this->apiLogger->info($e->getMessage() . $e->getTraceAsString());
+            $this->logger->info($e->getMessage() . $e->getTraceAsString());
         }
         return $result;
     }
@@ -92,7 +91,7 @@ class RestPlugin
      */
     private function canLog(string $url): bool
     {
-        $status = $this->configuration->getLoggingStatus();
+        $status = $this->configuration->getApiLoggingStatus();
         switch ($status) {
             case LoggingStatus::ENABLED_FOR_ALL:
                 $returnValue = true;
@@ -136,7 +135,7 @@ class RestPlugin
     private function getConfiguredUrls(): array
     {
         $returnValue = [];
-        $configuredUrls = trim($this->configuration->getLoggingUrls());
+        $configuredUrls = trim($this->configuration->getApiLoggingUrls());
         if ($configuredUrls) {
             $returnValue = array_map('trim', explode("\r\n", $configuredUrls));
         }
