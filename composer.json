@@ -2,7 +2,7 @@
   "name": "moses/magento-log",
   "description": "Moses Magento Log",
   "type": "magento2-module",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "autoload": {
     "files": [
       "registration.php"
