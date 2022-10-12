@@ -1,6 +1,6 @@
 # Magento Logging
 
-At this point this extension supports the below logging
+A very light weight logging module that supports
 - Api Logging
 - Elastic Serach Logging
 
