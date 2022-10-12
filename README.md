@@ -91,11 +91,11 @@ MAGE_ROOT/var/log/moses-logging.log
 ### How it works
 The implementation is not very complicated its quiet simple though.
 
-Magento uses the third party api client "elasticsearch/elasticsearch" to interact with ElasticSearch. This Extension by default has the feature the log the request and responses.
+Magento uses the third party api client "elasticsearch/elasticsearch" to interact with ElasticSearch. This Extension by default has the feature of logging the request and responses.
 
 \Elasticsearch\Connections\Connection::logRequestSuccess
 
-But while creating the instance of this elasticsearch model, Magento always set the logger to be NULL
-This extension thorugh a pluging sets this looger to a custome logger, Due to which the requests and the response are logged.
+But while creating the instance of this elasticsearch model, Magento always set the logger to be NULL due to which the the request never get logged.
+This extension thorugh a pluging sets this looger to a custom logger, Due to which the requests and the response are logged.
 
 
