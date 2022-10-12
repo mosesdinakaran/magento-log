@@ -5,24 +5,42 @@
  * See COPYING.txt for license details.
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <!-- API Plugins -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- API custom logging handler -->
+    <virtualType name="ApiDebug" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/moses-logging.log</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ApiLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">ApiDebug</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- API Plugins for Rest Logging-->
     <type name="Magento\Webapi\Controller\Rest">
         <plugin name="moses_log_magento_webapi_rest" type="Moses\Log\Plugin\Magento\Webapi\Controller\RestPlugin"/>
     </type>
 
-    <!-- API custom logging handler -->
-    <type name="Moses\Log\Model\Logger\ApiHandler">
+    <!-- Set API Logger-->
+    <type name="Moses\Log\Plugin\Magento\Webapi\Controller\RestPlugin">
         <arguments>
-            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+            <argument name="logger" xsi:type="object">ApiLogger</argument>
         </arguments>
     </type>
-    <type name="Moses\Log\Model\Logger\ApiLogger">
+
+    <!-- ES Logging -->
+    <type name="Magento\Elasticsearch\Model\Config">
+        <plugin name="moses_log_set_es_logger" type="Moses\Log\Plugin\Magento\Elasticsearch\Model\ConfigPlugin"/>
+    </type>
+    <type name="Moses\Log\Plugin\Magento\Elasticsearch\Model\ConfigPlugin">
         <arguments>
-            <argument name="name" xsi:type="string">MosesAPI</argument>
-            <argument name="handlers" xsi:type="array">
-                <item name="system" xsi:type="object">Moses\Log\Model\Logger\ApiHandler</item>
-            </argument>
+            <argument name="logger" xsi:type="object">ApiLogger</argument>
         </arguments>
     </type>
 </config>

@@ -9,6 +9,7 @@ namespace Moses\Log\Services;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Service to get module admin configurations
@@ -28,9 +29,9 @@ class Configuration
     /**#@+
      * XML path  constants
      */
-    const PATH_STATUS = 'me_api_logging/moses_logging/status';
-
-    const PATH_URLS = 'me_api_logging/moses_logging/urls';
+    const PATH_API_STATUS = 'moses_log/rest/status';
+    const PATH_API_URLS = 'moses_log/rest/urls';
+    const PATH_ES_STATUS = 'moses_log/es/status';
     /**#@-*/
 
     /**
@@ -50,12 +51,12 @@ class Configuration
      * To Get the logging status
      *
      * @return mixed
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
-    public function getLoggingStatus()
+    public function getApiLoggingStatus()
     {
         return $this->scopeConfig->getValue(
-            self::PATH_STATUS,
+            self::PATH_API_STATUS,
             ScopeInterface::SCOPE_WEBSITE,
             $this->storeManager->getStore()->getWebsiteId()
         );
@@ -65,12 +66,27 @@ class Configuration
      * To get the logging urls
      *
      * @return mixed
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      */
-    public function getLoggingUrls()
+    public function getApiLoggingUrls()
     {
         return $this->scopeConfig->getValue(
-            self::PATH_URLS,
+            self::PATH_API_URLS,
+            ScopeInterface::SCOPE_WEBSITE,
+            $this->storeManager->getStore()->getWebsiteId()
+        );
+    }
+
+    /**
+     * To Get the ES logging status
+     *
+     * @return mixed
+     * @throws NoSuchEntityException
+     */
+    public function getEsLoggingStatus()
+    {
+        return $this->scopeConfig->getValue(
+            self::PATH_ES_STATUS,
             ScopeInterface::SCOPE_WEBSITE,
             $this->storeManager->getStore()->getWebsiteId()
         );

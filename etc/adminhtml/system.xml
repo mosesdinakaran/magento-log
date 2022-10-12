@@ -10,19 +10,20 @@
     <tab id="moses_extensions" translate="label" sortOrder="600">
         <label>Moses Extensions</label>
     </tab>
-    <section id="me_api_logging" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
-        <label>API Logging</label>
+    <section id="moses_log" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Logging</label>
         <tab>moses_extensions</tab>
         <resource>Moses_Extensions::config</resource>
-        <group id="moses_logging" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="0"
+        <group id="rest" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="0"
                showInStore="0">
             <label>API Logging</label>
             <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
                    showInStore="1">
                 <label>Enable API Logging</label>
                 <source_model>Moses\Log\Model\Config\Source\LoggingStatus</source_model>
+                <comment>CAUTION : Make sure to disable logging once the debugging is completed, if left enabled the log messges will fill up the disk space</comment>
             </field>
-            <field id="urls" translate="label" type="textarea" sortOrder="21" showInDefault="1"
+            <field id="urls" translate="label" type="textarea" sortOrder="22" showInDefault="1"
                    showInWebsite="0" showInStore="0">
                 <label>Regular Expression Patterns</label>
                 <depends>
@@ -37,6 +38,16 @@
                     <br> V1/checkoutcomupapi/getTokenList : To Match a specific url
                     The method preg_match is used to match the url
                     ]]></comment>
+            </field>
+        </group>
+        <group id="es" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="0"
+               showInStore="0">
+            <label> Elasticsearch Logging</label>
+            <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Enable Elasticsearch Logging</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <comment>CAUTION : Make sure to disable logging once the debugging is completed, if left enabled the log messges will fill up the disk space</comment>
             </field>
         </group>
     </section>

@@ -9,6 +9,7 @@
     <module name="Moses_Log" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Framework" />
+            <module name="Magento_Elasticsearch7" />
         </sequence>
     </module>
 </config>
