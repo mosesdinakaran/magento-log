@@ -6,7 +6,7 @@ A very light weight logging module that supports
 
 
 
-> ### Please note that, This extension is for debugging purpose only, Once enabled this extesnion will write lot of data to the logs so plz be advised that keeping this extesnion on enabled mode for a long time will fill up your disk space. Once the debugging is completed this needs to be disbled
+> ### Please note that, This extension is for debugging purpose only, Once enabled this extesnion will write all/partial request and reponse to the log file based on your configuration, So plz be advised that keeping this extesnion on enabled mode for a long time will fill up your disk space. Once the debugging is completed this needs to be disbled
 
 
 ## API Logging
