@@ -4,6 +4,8 @@ A very light weight logging module that supports
 - Api Logging
 - Elastic Serach Logging
 
+
+
 > ### Please note that, This extension is for debugging purpose only, Once enabled this extesnion will write lot of data to the logs so plz be advised that keeping this extesnion on enabled mode for a long time will fill up your disk space. Once the debugging is completed this needs to be disbled
 
 
