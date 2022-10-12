@@ -1,4 +1,13 @@
-# Moses API Logging
+# Magento Logging
+
+At this point this extension supports the below logging
+- Api Logging
+- Elastic Serach Logging
+
+> ### Please note that, This extension is for debugging purpose only, Once enabled this extesnion will write lot of data to the logs so plz be advised that keeping this extesnion on enabled mode for a long time will fill up your disk space. Once the debugging is completed this needs to be disbled
+
+
+## API Logging
 
 This API logging extension from Moses Extensions, provides an options to log all/specific api calls.
 
@@ -16,7 +25,7 @@ This extension would help you in this scenario. It has the feature that we can l
 
 Let see the complete features of this extension.
 
-## Features
+### Features
 Enable or Disable Logging through Admin Configuration
 
 Able to configure the api urls that needs to be logged using regular expression which will give endless opportunity to the developer to log a specific url
@@ -34,7 +43,7 @@ Few such ex are
 
 This can be safely deployed in Production environment as its very light weight.
 
-## To Install
+### To Install
 
 This extension can be installed through composer or by downloading the extension package and placing it under the code directory (MAGE_ROOT/app/code/Moses/Log)
 Alternatively you can download from github as well https://github.com/mosesdinakaran/magento-log.git
@@ -45,7 +54,7 @@ composer require moses/magento-log
 
 Warning : This package is not installable via Composer 1.x, please make sure you upgrade to Composer 2+.
 
-## Configuration
+### Configuration
 Stores -> Configuration -> Moses Extensions -> API Logging
 
 Enable API Logging : To Enable all/selected api calls
@@ -60,7 +69,33 @@ V1/carts/(\d)* : Matches for all quotes
 
 V1/checkoutcomupapi/getTokenList : Match a specific url
 
-## Output
+### Output
 
 Once the API Logging is enabled, The request and response will be available in the below log file
-MAGE_ROOT/var/log/moses-api-debug.log
+MAGE_ROOT/var/log/moses-logging.log
+
+## Elastic Search Logging
+
+At times there might me a case where you need to find out exactly what data is being pushed to elastic search and what is the response that we receive.
+This extension will help you to do that.
+It will log all the request and response of ElasticSearch from Magento.
+
+### Configuration
+Stores -> Configuration -> Moses Extensions -> Elastic Search Logging
+
+### Output
+
+Once the API Logging is enabled, The request and response will be available in the below log file
+MAGE_ROOT/var/log/moses-logging.log
+
+### How it works
+The implementation is not very complicated its quiet simple though.
+
+Magento uses the third party api client "elasticsearch/elasticsearch" to interact with ElasticSearch. This Extension by default has the feature the log the request and responses.
+
+\Elasticsearch\Connections\Connection::logRequestSuccess
+
+But while creating the instance of this elasticsearch model, Magento always set the logger to be NULL
+This extension thorugh a pluging sets this looger to a custome logger, Due to which the requests and the response are logged.
+
+
