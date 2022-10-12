@@ -51,6 +51,7 @@ Alternatively you can download from github as well https://github.com/mosesdinak
 To Install with composer
 
 composer require moses/magento-log
+php bin/magento setup:upgrade
 
 Warning : This package is not installable via Composer 1.x, please make sure you upgrade to Composer 2+.
 
