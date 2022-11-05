@@ -1,12 +1,44 @@
 # Magento Logging
 
 A very lightweight logging module that supports
-- Api Logging
+- Rest Api Logging
 - Elastic Search Logging
+- GraphQl Logging
 
 
 
 > ### Please note that, This extension is for debugging purpose only, Once enabled this extension will write all/partial request and response to the log file based on your configuration, So plz be advised that keeping this extension on enabled mode for a long time will fill up your disk space. Once the debugging is completed this needs to be disabled
+
+## To Install
+
+### For Magento Version >= 2.4.4
+
+composer require moses/magento-log
+
+php bin/magento setup:upgrade
+
+#### Supported Logging
+- Rest API Logging
+- GraphQl Logging
+- ElasticSearch Logging
+
+### For Magento Version < 2.4.4
+
+composer require moses/magento-log 1.1.0
+
+php bin/magento setup:upgrade
+
+#### Supported Logging
+- Rest API Logging
+- ElasticSearch Logging
+
+For Magento version less than 2.4.4 if you need support for GraphQl logging plz try the below (Note its not tested from my end you can give a try)
+- Add this commit in to your code base https://github.com/magento/magento2/commit/50c88eb432b4a0880484a4db46165ad431d12a14
+- Post that download the version 2.1.0 directly from git and then put it under the app/code 
+
+Warning : This package is not install able via Composer 1.x, please make sure you upgrade to Composer 2+.
+
+Alternatively you can download from github as well https://github.com/mosesdinakaran/magento-log.git
 
 
 ## API Logging
@@ -44,18 +76,6 @@ Few such ex are
 - This extension doesn't override any CORE Api class.
 
 This can be safely deployed in Production environment as its very lightweight.
-
-### To Install
-
-This extension can be installed through composer or by downloading the extension package and placing it under the code directory (MAGE_ROOT/app/code/Moses/Log)
-Alternatively you can download from github as well https://github.com/mosesdinakaran/magento-log.git
-
-To Install with composer
-
-composer require moses/magento-log
-php bin/magento setup:upgrade
-
-Warning : This package is not install able via Composer 1.x, please make sure you upgrade to Composer 2+.
 
 ### Configuration
 Stores -> Configuration -> Moses Extensions -> API Logging
