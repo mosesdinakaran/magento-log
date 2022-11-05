@@ -13,9 +13,10 @@ A very lightweight logging module that supports
 
 ### For Magento Version >= 2.4.4
 
+```
 composer require moses/magento-log
-
 php bin/magento setup:upgrade
+```
 
 #### Supported Logging
 - Rest API Logging
@@ -24,9 +25,10 @@ php bin/magento setup:upgrade
 
 ### For Magento Version < 2.4.4
 
+```
 composer require moses/magento-log 1.1.0
-
 php bin/magento setup:upgrade
+```
 
 #### Supported Logging
 - Rest API Logging
