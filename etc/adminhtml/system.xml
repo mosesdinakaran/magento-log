@@ -30,7 +30,7 @@
                     <field id="status">2</field>
                 </depends>
                 <comment><![CDATA[
-                    <br> - Log file will be generated in MAGE_ROOT/var/log/moses-api-debug.log
+                    <br> - Log file will be generated in MAGE_ROOT/var/log/moses-logging.log
                     <br> - Use New line to enter more than one urls or Regular Expression
                     <br> - Ex
                     <br> V1/carts/9  : Matches all urls for quote ID 9 that contains V1/carts/9
@@ -46,6 +46,16 @@
             <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
                    showInStore="1">
                 <label>Enable Elasticsearch Logging</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <comment>CAUTION : Make sure to disable logging once the debugging is completed, if left enabled the log messges will fill up the disk space</comment>
+            </field>
+        </group>
+        <group id="graphql" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="0"
+               showInStore="0">
+            <label> Graphql Logging</label>
+            <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Graphql Logging</label>
                 <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 <comment>CAUTION : Make sure to disable logging once the debugging is completed, if left enabled the log messges will fill up the disk space</comment>
             </field>

@@ -29,9 +29,10 @@ class Configuration
     /**#@+
      * XML path  constants
      */
-    const PATH_API_STATUS = 'moses_log/rest/status';
-    const PATH_API_URLS = 'moses_log/rest/urls';
-    const PATH_ES_STATUS = 'moses_log/es/status';
+    private const PATH_API_STATUS = 'moses_log/rest/status';
+    private const PATH_API_URLS = 'moses_log/rest/urls';
+    private const PATH_ES_STATUS = 'moses_log/es/status';
+    private const PATH_GRAPHQL_STATUS= 'moses_log/graphql/status';
     /**#@-*/
 
     /**
@@ -91,4 +92,22 @@ class Configuration
             $this->storeManager->getStore()->getWebsiteId()
         );
     }
+
+    /**
+     * To Get the Graphql logging status
+     *
+     * @return mixed
+     * @throws NoSuchEntityException
+     */
+    public function getGraphqlLoggingStatus()
+    {
+        return $this->scopeConfig->getValue(
+            self::PATH_GRAPHQL_STATUS,
+            ScopeInterface::SCOPE_WEBSITE,
+            $this->storeManager->getStore()->getWebsiteId()
+        );
+    }
+
+
+
 }

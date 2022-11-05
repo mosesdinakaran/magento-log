@@ -41,8 +41,10 @@ class ConfigPlugin
     }
 
     /**
+     * Define the ES logger in to the $options array
+     *
      * @param Config $subject
-     * @param $options
+     * @param array $options
      * @return array|mixed
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
@@ -50,7 +52,7 @@ class ConfigPlugin
         Config $subject,
         $options = []
     ) {
-        if($this->configuration->getEsLoggingStatus()) {
+        if ($this->configuration->getEsLoggingStatus()) {
             $options['logger'] = $this->logger;
         }
         return $options;
