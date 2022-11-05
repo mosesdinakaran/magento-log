@@ -4,7 +4,7 @@
     "type": "magento2-module",
     "version": "2.1.0",
     "require": {
-        "magento/magento2-base": ">=2.4.4",
+        "magento/magento2-base": ">=2.4.4"
     },
     "autoload": {
         "files": [
