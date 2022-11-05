@@ -122,3 +122,14 @@ Magento uses the third party api client "elasticsearch/elasticsearch" to interac
 
 But while creating the instance of this elasticsearch model, Magento always set the logger to be NULL due to which the request never get logged.
 This extension through a plugin sets this logger to a custom logger, Due to which the requests and the response are logged.
+
+## GraphQl Logging
+GraphQl logging is supported only for magento version greater than or equal to 2.4.4
+
+### Configuration
+Stores -> Configuration -> Moses Extensions -> Graphql Logging
+
+### Output
+Once the API Logging is enabled, The graphql request and response will be available in the below log file
+MAGE_ROOT/var/log/moses-logging.log
+
