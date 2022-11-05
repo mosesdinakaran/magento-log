@@ -110,7 +110,7 @@ Stores -> Configuration -> Moses Extensions -> Elastic Search Logging
 
 ### Output
 
-Once the API Logging is enabled, The request and response will be available in the below log file
+Once the elasticserach Logging is enabled, all the communication between magento and elastic search are logged here
 MAGE_ROOT/var/log/moses-logging.log
 
 ### How it works
@@ -130,6 +130,6 @@ GraphQl logging is supported only for magento version greater than or equal to 2
 Stores -> Configuration -> Moses Extensions -> Graphql Logging
 
 ### Output
-Once the API Logging is enabled, The graphql request and response will be available in the below log file
+Once the graphql Logging is enabled, The graphql request and response will be available in the below log file
 MAGE_ROOT/var/log/moses-logging.log
 
