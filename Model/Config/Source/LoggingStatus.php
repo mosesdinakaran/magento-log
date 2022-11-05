@@ -8,11 +8,14 @@ namespace Moses\Log\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 
+/**
+ * The logging status for API logging
+ */
 class LoggingStatus implements OptionSourceInterface
 {
-    const ENABLED_FOR_ALL = 1;
-    const ENABLED_FOR_SPECIFIC = 2;
-    const DISABLED = 0;
+    private const ENABLED_FOR_ALL = 1;
+    private const ENABLED_FOR_SPECIFIC = 2;
+    private const DISABLED = 0;
 
     /**
      * Options getter

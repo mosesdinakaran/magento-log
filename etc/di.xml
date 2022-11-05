@@ -9,15 +9,15 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
     <!-- API custom logging handler -->
-    <virtualType name="ApiDebug" type="Magento\Framework\Logger\Handler\Base">
+    <virtualType name="MosesDebugHandler" type="Magento\Framework\Logger\Handler\Base">
         <arguments>
             <argument name="fileName" xsi:type="string">/var/log/moses-logging.log</argument>
         </arguments>
     </virtualType>
-    <virtualType name="ApiLogger" type="Magento\Framework\Logger\Monolog">
+    <virtualType name="MosesLogger" type="Magento\Framework\Logger\Monolog">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="debug" xsi:type="object">ApiDebug</item>
+                <item name="debug" xsi:type="object">MosesDebugHandler</item>
             </argument>
         </arguments>
     </virtualType>
@@ -30,7 +30,7 @@
     <!-- Set API Logger-->
     <type name="Moses\Log\Plugin\Magento\Webapi\Controller\RestPlugin">
         <arguments>
-            <argument name="logger" xsi:type="object">ApiLogger</argument>
+            <argument name="logger" xsi:type="object">MosesLogger</argument>
         </arguments>
     </type>
 
@@ -40,7 +40,24 @@
     </type>
     <type name="Moses\Log\Plugin\Magento\Elasticsearch\Model\ConfigPlugin">
         <arguments>
-            <argument name="logger" xsi:type="object">ApiLogger</argument>
+            <argument name="logger" xsi:type="object">MosesLogger</argument>
+        </arguments>
+    </type>
+    <type name="Moses\Log\Model\GraphQlLogger">
+        <arguments>
+            <argument name="logger" xsi:type="object">MosesLogger</argument>
+        </arguments>
+    </type>
+
+    <!-- GraphQl Logging -->
+    <type name="Magento\GraphQl\Helper\Query\Logger\LogData">
+        <plugin name="moses_log_add_graphql_log" type="Moses\Log\Plugin\Magento\GraphQl\Helper\Query\Logger\LogDataPlugin"/>
+    </type>
+    <type name="Magento\GraphQl\Model\Query\Logger\LoggerPool">
+        <arguments>
+            <argument name="loggers" xsi:type="array">
+                <item name="moses_es_logger" xsi:type="object">Moses\Log\Model\GraphQlLogger</item>
+            </argument>
         </arguments>
     </type>
 </config>
