@@ -1,4 +1,4 @@
-# Magento Logging
+# Magento Rest Api, Elastic Search, GraphQl Logging
 
 A very lightweight logging module that supports
 - Rest Api Logging
