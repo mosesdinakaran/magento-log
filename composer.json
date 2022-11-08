@@ -2,7 +2,7 @@
     "name": "moses/magento-log",
     "description": "Moses Magento Log",
     "type": "magento2-module",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "require": {
         "magento/magento2-base": ">=2.4.4"
     },
