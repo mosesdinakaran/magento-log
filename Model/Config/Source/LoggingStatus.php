@@ -13,8 +13,8 @@ use Magento\Framework\Data\OptionSourceInterface;
  */
 class LoggingStatus implements OptionSourceInterface
 {
-    private const ENABLED_FOR_ALL = 1;
-    private const ENABLED_FOR_SPECIFIC = 2;
+    const ENABLED_FOR_ALL = 1;
+    const ENABLED_FOR_SPECIFIC = 2;
     private const DISABLED = 0;
 
     /**
