@@ -1,15 +1,16 @@
 <?php
 
 /**
- * Copyright © 2021 Moses, LLC. All rights reserved.
+ * Copyright © 2023 Moses All rights reserved.
  * See LICENSE.txt for license details.
  */
+
 declare(strict_types=1);
 
 namespace Moses\Log\Plugin\Magento\Elasticsearch\Model;
 
-use Moses\Log\Services\Configuration;
 use Magento\Elasticsearch\Model\Config;
+use Moses\Log\Services\Configuration;
 use Psr\Log\LoggerInterface;
 
 /**

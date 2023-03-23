@@ -1,10 +1,13 @@
-# Magento Rest Api, Elastic Search, GraphQl Logging
+# Magento Logging
 
 A very lightweight logging module that supports
 - Rest Api Logging
 - Elastic Search Logging
 - GraphQl Logging
+- RabbitMq Logging
+- Varnish Cache Tag Bans Logging
 
+No Core files is overriden or modified. These logging are implemented using plugins.
 
 
 > ### Please note that, This extension is for debugging purpose only, Once enabled this extension will write all/partial request and response to the log file based on your configuration, So plz be advised that keeping this extension on enabled mode for a long time will fill up your disk space. Once the debugging is completed this needs to be disabled
@@ -19,9 +22,11 @@ php bin/magento setup:upgrade
 ```
 
 #### Supported Logging
-- Rest API Logging
+- Rest Api Logging
+- Elastic Search Logging
 - GraphQl Logging
-- ElasticSearch Logging
+- RabbitMq Logging
+- Varnish Cache Tag Bans Logging
 
 ### For Magento Version < 2.4.4
 
@@ -45,7 +50,7 @@ Alternatively you can download from github as well https://github.com/mosesdinak
 
 ## API Logging
 
-This API logging extension from Moses Extensions, provides an option to log all/specific api calls.
+Provides an option to log all/specific api calls.
 
 In most of our environment we use different third party services such as order management, product management, product search , shipping management etc. These services interact with Magento using Rest APi'S. 
 
@@ -94,10 +99,6 @@ V1/carts/(\d)* : Matches for all quotes
 
 V1/checkoutcomupapi/getTokenList : Match a specific url
 
-### Output
-
-Once the API Logging is enabled, The request and response will be available in the below log file
-MAGE_ROOT/var/log/moses-logging.log
 
 ## Elastic Search Logging
 
@@ -124,10 +125,34 @@ But while creating the instance of this elasticsearch model, Magento always set 
 This extension through a plugin sets this logger to a custom logger, Due to which the requests and the response are logged.
 
 ## GraphQl Logging
-GraphQl logging is supported only for magento version greater than or equal to 2.4.4
+To log the GraphQl Request and Response.
 
 ### Configuration
 Stores -> Configuration -> Moses Extensions -> Graphql Logging
+
+### Features
+- Able to log GET/POST Requests or All Requests
+- Able to log Based on HTTP Header Values
+- Able to log Based on Query types
+  - product : To log only the product query type
+  - product,categories : To log both product and categories query types
+
+## RabbitMq Logging
+To log the RabbitMq Messages that are send from Magento to RabbitMq Server or that are cosumed by Magento from RabbitMq.
+
+### Configuration
+Stores -> Configuration -> Moses Extensions -> RabbitMq Logging
+
+### Features
+- Able to log Outging Messages (The Messages that are published to RabbitMq Server)
+- Able to log Incomming Messages (The messages that are consumed from RabbitMq Server)
+
+## Varnish Cache Tags Logging
+To log the varnish purge cache tags, To know more on this <a href="https://mosesdinakaran.com/magento-2-full-page-caching-with-varnish-in-depth/#Configure_Commerce_to_purge_Varnish">please refer here </a>
+
+### Configuration
+Stores -> Configuration -> Moses Extensions -> Log Varnish Cache Purging Tags
+
 
 ### Output
 Once the graphql Logging is enabled, The graphql request and response will be available in the below log file
