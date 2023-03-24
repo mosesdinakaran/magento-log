@@ -1,8 +1,10 @@
 <?php
+
 /**
- *  Copyright © 2021 Alshaya, LLC. All rights reserved.
- *  See LICENSE.txt for license details.
+ * Copyright © 2023 Moses All rights reserved.
+ * See LICENSE.txt for license details.
  */
+
 declare(strict_types=1);
 
 namespace Moses\Log\Model;
@@ -45,10 +47,14 @@ class GraphQlLogger
      * @return void
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function execute($data)
+    public function execute(array $queryDetails)
     {
-        if ($this->configuration->getGraphqlLoggingStatus()) {
-            $this->logger->debug("Graphql Log Data: " . json_encode($data));
+        foreach($queryDetails as $data) {
+            if (isset($data['GraphQLCustomLogging'])
+                && $data['GraphQLCustomLogging']) {
+                $this->logger->debug("Graphql Log Data: " . json_encode($data['GraphQLCustomLogging']));
+                break;
+            }
         }
     }
 }

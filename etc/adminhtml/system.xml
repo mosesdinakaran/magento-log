@@ -5,32 +5,40 @@
  * See COPYING.txt for license details.
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
-<system>
-    <tab id="moses_extensions" translate="label" sortOrder="600">
-        <label>Moses Extensions</label>
-    </tab>
-    <section id="moses_log" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
-        <label>Logging</label>
-        <tab>moses_extensions</tab>
-        <resource>Moses_Extensions::config</resource>
-        <group id="rest" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="0"
-               showInStore="0">
-            <label>API Logging</label>
-            <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
-                   showInStore="1">
-                <label>Enable API Logging</label>
-                <source_model>Moses\Log\Model\Config\Source\LoggingStatus</source_model>
-                <comment>CAUTION : Make sure to disable logging once the debugging is completed, if left enabled the log messges will fill up the disk space</comment>
-            </field>
-            <field id="urls" translate="label" type="textarea" sortOrder="22" showInDefault="1"
-                   showInWebsite="0" showInStore="0">
-                <label>Regular Expression Patterns</label>
-                <depends>
-                    <field id="status">2</field>
-                </depends>
-                <comment><![CDATA[
-                    <br> - Log file will be generated in MAGE_ROOT/var/log/moses-logging.log
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="moses_extensions" translate="label" sortOrder="600">
+            <label>Moses Extensions</label>
+        </tab>
+        <section id="moses_log" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Logging</label>
+            <tab>moses_extensions</tab>
+            <resource>Moses_Extensions::config</resource>
+            <group id="generalinfo" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1">
+                <label>Intro</label>
+                <field id="info" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <frontend_model>Moses\Log\Block\Adminhtml\Form\Renderer\Config\Info</frontend_model>
+                </field>
+
+            </group>
+            <group id="rest" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>API Logging</label>
+                <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Enable API Logging</label>
+                    <source_model>Moses\Log\Model\Config\Source\LoggingStatus</source_model>
+                </field>
+                <field id="urls" translate="label" type="textarea" sortOrder="22" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Regular Expression Patterns</label>
+                    <depends>
+                        <field id="status">2</field>
+                    </depends>
+                    <comment><![CDATA[
                     <br> - Use New line to enter more than one urls or Regular Expression
                     <br> - Ex
                     <br> V1/carts/9  : Matches all urls for quote ID 9 that contains V1/carts/9
@@ -38,28 +46,70 @@
                     <br> V1/checkoutcomupapi/getTokenList : To Match a specific url
                     The method preg_match is used to match the url
                     ]]></comment>
-            </field>
-        </group>
-        <group id="es" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="0"
-               showInStore="0">
-            <label> Elasticsearch Logging</label>
-            <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
-                   showInStore="1">
-                <label>Enable Elasticsearch Logging</label>
-                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                <comment>CAUTION : Make sure to disable logging once the debugging is completed, if left enabled the log messges will fill up the disk space</comment>
-            </field>
-        </group>
-        <group id="graphql" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="0"
-               showInStore="0">
-            <label> Graphql Logging</label>
-            <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
-                   showInStore="1">
+                </field>
+            </group>
+            <group id="es" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>Elasticsearch Logging</label>
+                <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Elasticsearch Logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="graphql" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
                 <label>Graphql Logging</label>
-                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                <comment>CAUTION : Make sure to disable logging once the debugging is completed, if left enabled the log messges will fill up the disk space</comment>
-            </field>
-        </group>
-    </section>
-</system>
+                <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Graphql Logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="http_methods" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Filter By Http Headers</label>
+                    <source_model>Moses\Log\Model\Config\Source\HttpMethods</source_model>
+                </field>
+                <field id="query_type" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Filter By Query Type</label>
+                    <comment><![CDATA[
+                    <br>A comma separated GraphQL query Types
+                    <br> Ex
+                    <br> - product  : To log only the product query type
+                    <br> - product,categories : To log both product and categories query types
+                    ]]></comment>
+                </field>
+                <field id="header" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Filter By Headers</label>
+                    <frontend_model>Moses\Log\Block\Adminhtml\Form\Field\DynamicField</frontend_model>
+                    <backend_model>Moses\Log\Model\Config\Backend\DynamicField</backend_model>
+                </field>
+            </group>
+            <group id="rabbitmq" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>RabbitMQ / MessageQueue Logging</label>
+                <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>RabbitMQ Logging</label>
+                    <source_model>Moses\Log\Model\Config\Source\RabbitMqLogStatus</source_model>
+                </field>
+            </group>
+            <group id="varnish" translate="label" type="text" sortOrder="400" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>Log Varnish Cache Purging Tags</label>
+                <field id="status" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Varnish Cache Tags</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[
+                    <br>Please Note, If you see the cache tags in the logs dosent mean that the Varnish Cache Puging is happening.
+                    <br>If you are seeing the tags in the log, But varnish is not puging the cache means it could be a varnish configuration issue.
+                    <br> <a target="_blank" href="https://mosesdinakaran.com/magento-2-full-page-caching-with-varnish-in-depth/#Configure_Commerce_to_purge_Varnish">To know more you can also refer this blog</a>
+                    ]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
 </config>

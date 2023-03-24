@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright © 2021 Moses, LLC. All rights reserved.
+ * Copyright © 2023 Moses All rights reserved.
  * See LICENSE.txt for license details.
  */
 
@@ -8,8 +9,8 @@ declare(strict_types=1);
 
 namespace Moses\Log\Model\Logger;
 
-use Monolog\Logger;
 use Magento\Framework\Logger\Handler\Base;
+use Monolog\Logger;
 
 /**
  * Class ApiHandler

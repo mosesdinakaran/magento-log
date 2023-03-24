@@ -17,6 +17,9 @@
             <graphql>
                 <status>0</status>
             </graphql>
+            <rabbitmq>
+                <status>0</status>
+            </rabbitmq>
         </moses_log>
     </default>
 </config>

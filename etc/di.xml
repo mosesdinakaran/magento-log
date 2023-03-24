@@ -60,4 +60,33 @@
             </argument>
         </arguments>
     </type>
+    <!-- Varnish Logging -->
+    <type name="Magento\CacheInvalidate\Model\PurgeCache">
+        <plugin name="moses_log_varnish" type="Moses\Log\Plugin\Magento\CacheInvalidate\Model\PurgeCachePlugin"/>
+    </type>
+
+    <!-- Set Varnish Logger-->
+    <type name="Moses\Log\Plugin\Magento\CacheInvalidate\Model\PurgeCachePlugin">
+        <arguments>
+            <argument name="logger" xsi:type="object">MosesLogger</argument>
+        </arguments>
+    </type>
+
+    <!-- RabbitMQ Logging -->
+    <type name="Magento\Framework\MessageQueue\Publisher">
+        <plugin name="moses_log_add_rabbitmq_log_publisher" type="Moses\Log\Plugin\Magento\Framework\MessageQueue\PublisherPlugin"/>
+    </type>
+    <type name="Moses\Log\Plugin\Magento\Framework\MessageQueue\PublisherPlugin">
+        <arguments>
+            <argument name="logger" xsi:type="object">MosesLogger</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Amqp\Queue">
+        <plugin name="moses_log_add_rabbitmq_log_subscriber" type="Moses\Log\Plugin\Magento\Framework\Amqp\QueuePlugin"/>
+    </type>
+    <type name="Moses\Log\Plugin\Magento\Framework\Amqp\QueuePlugin">
+        <arguments>
+            <argument name="logger" xsi:type="object">MosesLogger</argument>
+        </arguments>
+    </type>
 </config>
