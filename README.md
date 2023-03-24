@@ -21,13 +21,6 @@ composer require moses/magento-log
 php bin/magento setup:upgrade
 ```
 
-#### Supported Logging
-- Rest Api Logging
-- Elastic Search Logging
-- GraphQl Logging
-- RabbitMq Logging
-- Varnish Cache Tag Bans Logging
-
 ### For Magento Version < 2.4.4
 
 ```
@@ -65,6 +58,8 @@ To effectively debug this issue, we would require the post data, headers etc tha
 This extension would help you in this scenario. It has the feature that we can log the api request that is made by a specific user.
 
 Let see the complete features of this extension.
+
+![Rest API logging](https://mosesdinakaran.com/wp-content/uploads/2023/03/image-26-1024x343.png)
 
 ### Features
 Enable or Disable Logging through Admin Configuration
@@ -130,6 +125,9 @@ To log the GraphQl Request and Response.
 ### Configuration
 Stores -> Configuration -> Moses Extensions -> Graphql Logging
 
+![Graphql logging](https://mosesdinakaran.com/wp-content/uploads/2023/03/image-27-1024x530.png)
+
+
 ### Features
 - Able to log GET/POST Requests or All Requests
 - Able to log Based on HTTP Header Values
@@ -142,6 +140,9 @@ To log the RabbitMq Messages that are send from Magento to RabbitMq Server or th
 
 ### Configuration
 Stores -> Configuration -> Moses Extensions -> RabbitMq Logging
+
+![RabbitMq logging](https://mosesdinakaran.com/wp-content/uploads/2023/03/image-28-1024x210.png)
+
 
 ### Features
 - Able to log Outging Messages (The Messages that are published to RabbitMq Server)
