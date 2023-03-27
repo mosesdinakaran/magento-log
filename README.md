@@ -18,6 +18,7 @@ No Core files is overriden or modified. These logging are implemented using plug
 
 ```
 composer require moses/magento-log
+ php bin/magento module:enable Moses_Log
 php bin/magento setup:upgrade
 ```
 
@@ -25,6 +26,7 @@ php bin/magento setup:upgrade
 
 ```
 composer require moses/magento-log 1.1.0
+ php bin/magento module:enable Moses_Log
 php bin/magento setup:upgrade
 ```
 
