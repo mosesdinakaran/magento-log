@@ -18,7 +18,7 @@ No Core files is overriden or modified. These logging are implemented using plug
 
 ```
 composer require moses/magento-log
- php bin/magento module:enable Moses_Log
+php bin/magento module:enable Moses_Log
 php bin/magento setup:upgrade
 ```
 
@@ -26,7 +26,7 @@ php bin/magento setup:upgrade
 
 ```
 composer require moses/magento-log 1.1.0
- php bin/magento module:enable Moses_Log
+php bin/magento module:enable Moses_Log
 php bin/magento setup:upgrade
 ```
 
@@ -106,11 +106,6 @@ It will log all the request and response of Elasticsearch from Magento.
 ### Configuration
 Stores -> Configuration -> Moses Extensions -> Elastic Search Logging
 
-### Output
-
-Once the elasticserach Logging is enabled, all the communication between magento and elastic search are logged here
-MAGE_ROOT/var/log/moses-logging.log
-
 ### How it works
 The implementation is not very complicated its quiet simple though.
 
@@ -128,7 +123,6 @@ To log the GraphQl Request and Response.
 Stores -> Configuration -> Moses Extensions -> Graphql Logging
 
 ![Graphql logging](https://mosesdinakaran.com/wp-content/uploads/2023/03/image-27-1024x530.png)
-
 
 ### Features
 - Able to log GET/POST Requests or All Requests
@@ -158,6 +152,6 @@ Stores -> Configuration -> Moses Extensions -> Log Varnish Cache Purging Tags
 
 
 ### Output
-Once the graphql Logging is enabled, The graphql request and response will be available in the below log file
+Once the Logging is enabled, The log data will be available in the below
 MAGE_ROOT/var/log/moses-logging.log
 
