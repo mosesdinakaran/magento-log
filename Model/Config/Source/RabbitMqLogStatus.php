@@ -51,9 +51,9 @@ class RabbitMqLogStatus implements OptionSourceInterface
     /**
      * Get options in "key-value" format
      *
-     * @return arrary
+     * @return array
      */
-    public function toArray(): arrary
+    public function toArray(): array
     {
         return [
             self::LOG_ALL => __('Log Disabled'),
