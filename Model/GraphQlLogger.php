@@ -23,20 +23,12 @@ class GraphQlLogger
     private LoggerInterface $logger;
 
     /**
-     * @var Configuration
-     */
-    private Configuration $configuration;
-
-    /**
-     * @param Configuration $configuration
      * @param LoggerInterface $logger
      */
     public function __construct(
-        Configuration $configuration,
         LoggerInterface $logger
     ) {
         $this->logger = $logger;
-        $this->configuration = $configuration;
     }
 
     /**
