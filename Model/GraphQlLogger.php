@@ -20,32 +20,23 @@ class GraphQlLogger
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
-     * @var Configuration
-     */
-    private $configuration;
-
-    /**
-     * @param Configuration $configuration
      * @param LoggerInterface $logger
      */
     public function __construct(
-        Configuration $configuration,
         LoggerInterface $logger
     ) {
         $this->logger = $logger;
-        $this->configuration = $configuration;
     }
 
     /**
      * This method will be called from here
      * \Magento\GraphQl\Model\Query\Logger\LoggerPool::execute
      *
-     * @param array $data
+     * @param array $queryDetails
      * @return void
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function execute(array $queryDetails)
     {

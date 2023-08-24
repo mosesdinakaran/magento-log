@@ -25,17 +25,17 @@ class RestPlugin
     /**
      * @var Configuration
      */
-    private $configuration;
+    private Configuration $configuration;
 
     /**
      * @var SerializerInterface
      */
-    private $jsonSerializer;
+    private SerializerInterface $jsonSerializer;
 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * @param Configuration $configuration
@@ -53,7 +53,7 @@ class RestPlugin
     }
 
     /**
-     * After pluging method
+     * After plugin method
      *
      * @param Rest $subject
      * @param RestResponse $result
@@ -92,16 +92,11 @@ class RestPlugin
     private function canLog(string $url): bool
     {
         $status = $this->configuration->getApiLoggingStatus();
-        switch ($status) {
-            case LoggingStatus::ENABLED_FOR_ALL:
-                $returnValue = true;
-                break;
-            case LoggingStatus::ENABLED_FOR_SPECIFIC:
-                $returnValue = $this->isValidUrlForLogging($url);
-                break;
-            default:
-                $returnValue = false;
-        }
+        $returnValue = match ($status) {
+            LoggingStatus::ENABLED_FOR_ALL => true,
+            LoggingStatus::ENABLED_FOR_SPECIFIC => $this->isValidUrlForLogging($url),
+            default => false,
+        };
 
         return $returnValue;
     }

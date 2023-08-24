@@ -7,7 +7,7 @@ A very lightweight logging module that supports
 - RabbitMq Logging
 - Varnish Cache Tag Bans Logging
 
-No Core files is overriden or modified. These logging are implemented using plugins.
+No Core files is overridden or modified. These logging are implemented using plugins.
 
 
 > ### Please note that, This extension is for debugging purpose only, Once enabled this extension will write all/partial request and response to the log file based on your configuration, So plz be advised that keeping this extension on enabled mode for a long time will fill up your disk space. Once the debugging is completed this needs to be disabled
@@ -141,8 +141,8 @@ Stores -> Configuration -> Moses Extensions -> RabbitMq Logging
 
 
 ### Features
-- Able to log Outging Messages (The Messages that are published to RabbitMq Server)
-- Able to log Incomming Messages (The messages that are consumed from RabbitMq Server)
+- Able to log Outgoing Messages (The Messages that are published to RabbitMq Server)
+- Able to log Incoming Messages (The messages that are consumed from RabbitMq Server)
 
 ## Varnish Cache Tags Logging
 To log the varnish purge cache tags, To know more on this <a href="https://mosesdinakaran.com/magento-2-full-page-caching-with-varnish-in-depth/#Configure_Commerce_to_purge_Varnish">please refer here </a>

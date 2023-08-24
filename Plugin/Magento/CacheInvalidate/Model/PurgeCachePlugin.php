@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Moses\Log\Plugin\Magento\CacheInvalidate\Model;
 
+use Exception;
 use Magento\CacheInvalidate\Model\PurgeCache;
 use Magento\Framework\Serialize\SerializerInterface;
 use Moses\Log\Services\Configuration;
@@ -23,17 +24,17 @@ class PurgeCachePlugin
     /**
      * @var Configuration
      */
-    private $configuration;
+    private Configuration $configuration;
 
     /**
      * @var SerializerInterface
      */
-    private $jsonSerializer;
+    private SerializerInterface $jsonSerializer;
 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * @param Configuration $configuration
@@ -58,8 +59,8 @@ class PurgeCachePlugin
      */
     public function afterSendPurgeRequest(
         PurgeCache $subject,
-        $result,
-        $tags
+                   $result,
+                   $tags
     ) {
         try {
             if (!$this->configuration->getVarnishLoggingStatus()) {
@@ -72,7 +73,7 @@ class PurgeCachePlugin
                 );
             }
             $this->logger->info("Varnish Cache Tags For Purging: " . $this->jsonSerializer->serialize($tags));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->logger->info($e->getMessage() . $e->getTraceAsString());
         }
         return $result;

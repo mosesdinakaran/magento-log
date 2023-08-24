@@ -22,12 +22,12 @@ class ConfigPlugin
     /**
      * @var Configuration
      */
-    private $configuration;
+    private Configuration $configuration;
 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * @param Configuration $configuration
@@ -51,7 +51,7 @@ class ConfigPlugin
      */
     public function afterPrepareClientOptions(
         Config $subject,
-        $options = []
+               $options = []
     ) {
         if ($this->configuration->getEsLoggingStatus()) {
             $options['logger'] = $this->logger;

@@ -46,9 +46,9 @@ class HttpMethods implements OptionSourceInterface
     /**
      * Get options in "key-value" format
      *
-     * @return arrary
+     * @return array
      */
-    public function toArray(): arrary
+    public function toArray(): array
     {
         return [
             self::HTTP_ALL => __('Log All Http Methods'),
